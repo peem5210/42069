@@ -12,5 +12,5 @@ class LineNotiService:
         self.util = LineNotiUtil(self.conf['url'], self.headers)
 
     def send_msg(self, msg: str) -> dict[str, Union[str, int]]:
-        res = self.send_msg_request(msg)
+        res = self.util.send_msg_request(msg)
         return res
