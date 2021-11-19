@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+    42069-backend:
+        build: .
+        networks:
+            - 42069-backend-net
+        container_name: "42069-backend-container"
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./42069:/app
+        restart: always
+networks:
+    42069-backend-net:
+        name: "42069"
