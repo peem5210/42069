@@ -6,7 +6,7 @@ services:
             - 42069-backend-net
         container_name: "42069-backend-container"
         ports:
-            - "8000:8000"
+            - "8001:8000"
         volumes:
             - ./42069:/app
         restart: always
