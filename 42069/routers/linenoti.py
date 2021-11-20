@@ -5,14 +5,14 @@ from service.linenoti.linenoti_service import LineNotiService
 router = APIRouter(
     prefix="/line",
     tags=["line"],
-    responses={404: {"description": "Fuck you"}},
+    responses={404: {"description": "Fuck test"}},
 )
 linenoti_service = LineNotiService()
 
 
 @router.get("/")
 async def line():
-    return [{"msg": f"kk"}, {"test": "Morty"}]
+    return [{"msg": f"kk"}, {"test": "test"}]
 
 
 @router.get("/{msg}")

@@ -8,7 +8,7 @@ services:
         ports:
             - "8001:8000"
         volumes:
-            - .:/app
+            - ./42069:/42069
         restart: always
 networks:
     42069-backend-net:
