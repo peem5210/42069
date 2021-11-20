@@ -1,7 +1,7 @@
 import requests
 
 
-class LineNotiUtil:
+class LaiUtil:
     def __init__(self, config):
         self.headers = {'content-type': 'application/x-www-form-urlencoded',
                         'Authorization': 'Bearer ' + config['token']}

@@ -1,10 +1,12 @@
 from fastapi import FastAPI
-from util.util_func import load_env
+from utils.util_func import load_env
 from routers import (
-    linenoti,
+    lai,
+    twither,
     )
+
 load_env()
 app = FastAPI()
 
-
-app.include_router(linenoti.router)
+app.include_router(lai.router)
+app.include_router(twither.router)
