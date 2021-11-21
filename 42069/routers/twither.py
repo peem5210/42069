@@ -1,13 +1,14 @@
 from typing import Union
 from fastapi import APIRouter
-from services.twither_service import TwitherService
+from services.twither.twither_service import TwitherService
 
 router = APIRouter(
     prefix="/twitter",
     tags=["twitter"],
-    responses={404: {"description": "Fuck"}},
+    responses={404: {"description": "Sucker"}},
 )
 twither_service = TwitherService()
+
 
 @router.get("/")
 async def twitter():

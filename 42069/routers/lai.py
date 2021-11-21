@@ -1,11 +1,11 @@
 from typing import Union
 from fastapi import APIRouter
-from services.lai_service import LaiService
+from services.lai.lai_service import LaiService
 
 router = APIRouter(
     prefix="/line",
     tags=["line"],
-    responses={404: {"description": "Fuck test"}},
+    responses={404: {"description": "Not found, Sucker"}},
 )
 lai_service = LaiService()
 

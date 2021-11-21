@@ -1,7 +1,7 @@
 from typing import Union
 
 from utils.util_func import load_conf
-from utils.twither_util import TwitherUtil
+from services.twither.twither_util import TwitherUtil
 
 
 class TwitherService:

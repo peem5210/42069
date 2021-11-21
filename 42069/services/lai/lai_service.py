@@ -1,7 +1,7 @@
 from typing import Union
 
 from utils.util_func import load_conf
-from utils.lai_util import LaiUtil
+from services.lai.lai_util import LaiUtil
 
 
 class LaiService:
