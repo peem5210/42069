@@ -1,4 +1,4 @@
-name: Build docker image
+name: build docker image
 
 on:
   push:
@@ -19,5 +19,5 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: build docker image
       run: docker build . --file Dockerfile --tag 42069:$(date +%s)
