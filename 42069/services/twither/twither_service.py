@@ -7,7 +7,7 @@ from services.twither.twither_util import TwitherUtil
 class TwitherService:
     def __init__(self):
         try:
-            self.conf: dict[str, Union[str, int]] = load_conf(dir='configs/', name='linenot.json')
+            self.conf: dict[str, Union[str, int]] = {}
             self.util: TwitherUtil = TwitherUtil(self.conf)
         except Exception as e:
             print(f"error: {str(e)}")
