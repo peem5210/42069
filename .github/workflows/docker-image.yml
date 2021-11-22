@@ -34,3 +34,9 @@ jobs:
 
     - name: image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
+      
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: redeploy
+        run: ./redeploy
