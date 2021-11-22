@@ -11,8 +11,8 @@ class LaiService:
             self.conf: dict[str, Union[str, int]] = load_conf(dir='./42069/configs/', name='linenoti.json')
         except Exception:
             load_env('./configs/', name='lai')
-            self.conf['url'] = env('URL')
-            self.conf['token'] = env('TOKEN')
+            self.conf['url'] = env('LAI_URL')
+            self.conf['token'] = env('LAI_TOKEN')
         self.util: LaiUtil = LaiUtil(self.conf)
 
     def send_msg(self, msg: str) -> dict[str, Union[str, int]]:
