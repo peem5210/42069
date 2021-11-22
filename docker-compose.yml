@@ -1,7 +1,7 @@
 version: '3.7'
 services:
     42069-backend:
-        image: peem5210/42069
+        image: peem5210/42069:latest
         networks:
             - 42069-backend-net
         container_name: "42069-backend-container"
