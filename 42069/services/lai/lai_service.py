@@ -6,7 +6,7 @@ from services.lai.lai_util import LaiUtil
 
 class LaiService:
     def __init__(self):
-        self.conf: dict[str, Union[str, int]] = load_conf(dir='configs/', name='linenoti.json')
+        self.conf: dict[str, Union[str, int]] = load_conf(dir='./42069/configs/', name='linenoti.json')
         self.util: LaiUtil = LaiUtil(self.conf)
 
     def send_msg(self, msg: str) -> dict[str, Union[str, int]]:

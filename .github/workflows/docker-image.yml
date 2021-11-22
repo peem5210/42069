@@ -40,4 +40,4 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: redeploy
-        run: curl localhost:9000/hooks/redeploy-webhook
+        run: sh ./redeploy.sh
