@@ -1,0 +1,16 @@
+name: Build docker image
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    if: "! contains(toJSON(github.event.commits.*.message), '[noCI]')"
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag 42069:$(date +%s)
