@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    if: "! contains(toJSON(github.event.commits.*.message), '[noCI]')"
+    if: "! contains(toJSON(github.event.commits.*.message), '[noBUILD]')"
     runs-on: self-hosted
     
     steps:
@@ -36,6 +36,7 @@ jobs:
       run: echo ${{ steps.docker_build.outputs.digest }}
       
   deploy:
+    if: "! contains(toJSON(github.event.commits.*.message), '[noCD]')"
     needs: [build]
     runs-on: self-hosted
     steps:
