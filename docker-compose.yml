@@ -3,13 +3,13 @@ services:
     42069-backend:
         build: .
         networks:
-            - 42069-backend-net
-        container_name: "42069-backend-container"
+            - 42069-backend-net-dev
+        container_name: "42069-backend-container-dev"
         ports:
             - "8001:8000"
         volumes:
             - ./42069:/42069
         restart: always
 networks:
-    42069-backend-net:
-        external: true
+    42069-backend-net-dev:
+        name: "42069"
