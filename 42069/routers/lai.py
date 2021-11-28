@@ -5,7 +5,7 @@ from services.lai.lai_service import LaiService
 router = APIRouter(
     prefix="/line",
     tags=["line"],
-    responses={404: {"description": "Not found, Sucker"}},
+    responses={404: {"description": "Not found, Sucker "}},
 )
 lai_service = LaiService()
 
