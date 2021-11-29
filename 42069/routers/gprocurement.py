@@ -7,8 +7,10 @@ router = APIRouter(
     responses={404: {"description": "Not found, Sucker "}},
 )
 gprocurement_service = GprocurementService()
+
+
 @router.get("/e-bidding/")
-async def line(
+async def ebidding(
         page: int = 0,
         project_type: str = '01',
         sdate: str = '',
@@ -18,7 +20,3 @@ async def line(
         dept_id: str = ''
 ):
     return gprocurement_service.get_ebidding(page, project_type, sdate, edate, budget, project_id, dept_id)
-
-
-
-

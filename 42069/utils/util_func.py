@@ -11,8 +11,10 @@ def env(variable: str, to_int: bool = False):
     return result
 
 
-def load_env(path="./", name=""):
-    dotenv.load_dotenv(os.path.join(os.path.dirname(path), f'{name}.env'))
+def load_env(path="./.env"):
+    with open(path, 'r') as f:
+        print(f.readlines())
+    dotenv.load_dotenv(path)
 
 
 def load_conf(dir="./", name="", type="json"):

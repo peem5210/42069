@@ -1,14 +1,14 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from utils.util_func import load_env
 from routers import (
     lai,
     twither,
-    gprocurement
+    gprocurement,
+    temp_capstone
     )
 
-load_env()
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -20,3 +20,5 @@ app.add_middleware(
 app.include_router(lai.router)
 app.include_router(twither.router)
 app.include_router(gprocurement.router)
+app.include_router(temp_capstone.router)
+

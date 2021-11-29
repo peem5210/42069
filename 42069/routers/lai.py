@@ -1,12 +1,14 @@
 from typing import Union
 from fastapi import APIRouter
 from services.lai.lai_service import LaiService
+from utils.util_func import load_env
 
 router = APIRouter(
     prefix="/line",
     tags=["line"],
     responses={404: {"description": "Not found, Sucker "}},
 )
+load_env("./configs/lai.env")
 lai_service = LaiService()
 
 
