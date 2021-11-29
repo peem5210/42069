@@ -32,6 +32,9 @@ class CapStoneUtil:
         s_buf.seek(0)
         return StreamingResponse(s_buf)
 
+    def list_all(self):
+        return os.listdir(self.dir)
+
     def clear(self):
         shutil.rmtree(self.dir)
         pathlib.Path(self.dir).mkdir(parents=True, exist_ok=True)

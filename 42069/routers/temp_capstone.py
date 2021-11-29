@@ -13,13 +13,20 @@ capstone_service = CapStoneService()
 async def store_json(json: dict):
     return capstone_service.open_and_store_json(json)
 
+
 @router.post("/store-json/{name}")
 async def store_json(json: dict, name:str):
     return capstone_service.open_and_store_json(json, name=name)
 
+
 @router.get("/read-all-json/")
 async def read_all():
     return capstone_service.read_all()
+
+
+@router.get("/list-all-json/")
+async def read_all():
+    return capstone_service.list_all()
 
 
 @router.get("/clear/")

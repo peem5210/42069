@@ -10,10 +10,12 @@ class CapStoneService:
         res = self.util.open_and_store_json(json, name=name)
         return res
 
-
     def read_all(self) -> dict[str, Union[str, int, list[dict]]]:
         res = self.util.read_all()
         return res
+
+    def list_all(self):
+        return self.util.list_all()
 
     def clear(self):
         return self.util.clear()
