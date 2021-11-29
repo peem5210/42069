@@ -1,9 +1,11 @@
 import os
+import io
 import json
 import shutil
 import pathlib
 import pandas as pd
 from datetime import datetime
+from starlette.responses import StreamingResponse
 from services.lai.lai_service import LaiService
 
 
@@ -25,7 +27,10 @@ class CapStoneUtil:
                 df = df.append(pd.read_csv(os.path.join(self.dir, f)))
             except Exception:
                 continue
-        return df.reset_index(drop=True).to_json()
+        s_buf = io.StringIO()
+        df.reset_index(drop=True).to_csv(s_buf)
+        s_buf.seek(0)
+        return StreamingResponse(s_buf)
 
     def clear(self):
         shutil.rmtree(self.dir)
