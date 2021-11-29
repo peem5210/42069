@@ -28,4 +28,7 @@ class CapStoneUtil:
         return df.reset_index(drop=True).to_json()
 
     def clear(self):
-        return shutil.rmtree(self.dir)
+        shutil.rmtree(self.dir)
+        pathlib.Path(self.dir).mkdir(parents=True, exist_ok=True)
+        return "ok"
+
