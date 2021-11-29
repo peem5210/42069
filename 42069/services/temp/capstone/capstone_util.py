@@ -15,10 +15,10 @@ class CapStoneUtil:
         self.dir = './data'
 
     def open_and_store_json(self, json_d, name=''):
-        json_string = json.dumps(json_d)
         pathlib.Path(self.dir).mkdir(parents=True, exist_ok=True)
-        pd.DataFrame.from_dict(json_d).to_csv(os.path.join(self.dir, f"{name}--{str(datetime.now())}.csv"))
-        return self.lai_service.send_msg(json_string)
+        file_name = f"{name}--{str(datetime.now())}.csv"
+        pd.DataFrame.from_dict(json_d).to_csv(os.path.join(self.dir, file_name))
+        return self.lai_service.send_msg(file_name)
 
     def read_all(self):
         df = pd.DataFrame()
@@ -28,7 +28,7 @@ class CapStoneUtil:
             except Exception:
                 continue
         s_buf = io.StringIO()
-        df.reset_index(drop=True).to_csv(s_buf)
+        df.reset_index(drop=True).to_csv(s_buf, index=False)
         s_buf.seek(0)
         return StreamingResponse(s_buf)
 
