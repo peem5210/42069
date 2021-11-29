@@ -12,8 +12,8 @@ def env(variable: str, to_int: bool = False):
 
 
 def load_env(path="./.env"):
-    with open(path, 'r') as f:
-        print(f.readlines())
+    # with open(path, 'r') as f:
+    #     print(f.readlines())
     dotenv.load_dotenv(path)
 
 
