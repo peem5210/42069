@@ -18,10 +18,9 @@ class GSheetConnector:
             self.sheet_list = self.get_sheet_list()
         finally:
             if os.path.isfile(TMP_SERVICE_ACCOUNT_PATH):
-                with open(TMP_SERVICE_ACCOUNT_PATH, "r") as f:
-                    print(json.load(f))
-                pass
-                # os.remove(TMP_SERVICE_ACCOUNT_PATH)
+                # with open(TMP_SERVICE_ACCOUNT_PATH, "r") as f:
+                #     print(json.load(f))
+                os.remove(TMP_SERVICE_ACCOUNT_PATH)
 
     def upsert_sheet_by_df(self, sheet_name, df):
         self.sh.worksheet(sheet_name).update([df.columns.values.tolist()] + df.values.tolist())
