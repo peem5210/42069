@@ -39,8 +39,9 @@ class GprocurementService:
         price = self.normalize_string(tr.select('td')[4].text)
         status = self.normalize_string(tr.select('td')[5].text)
         return (
-        dept_name, subdept_id, project_id, annoucement_date, self.TYPE_NAME.get(project_type, ""), story, price, status,
-        zip_url, winner_url)
+            dept_name, subdept_id, project_id, annoucement_date, self.TYPE_NAME.get(project_type, ""), story, price,
+            status,
+            zip_url, winner_url)
 
     def get_trs(self, page, project_type, sdate, edate, budget=3 * 1e6, project_id='', dept_id=''):
         print("requesting page {}".format(page))
@@ -48,7 +49,7 @@ class GprocurementService:
         soup = BeautifulSoup(response.text, 'html.parser')
         return soup.select('.tr0') + soup.select('.tr1')
 
-    @cached(cache=TTLCache(maxsize=100, ttl= 60 * 60 * 60 * 24))
+    @cached(cache=TTLCache(maxsize=100, ttl=60 * 60 * 60 * 24))
     def get_ebidding(self, page: int = 0,
                      project_type: str = '01',
                      sdate: str = '',

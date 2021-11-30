@@ -5,6 +5,16 @@ services:
         environment:
             - LAI_URL
             - LAI_TOKEN
+            - TYPE
+            - PROJECT_ID
+            - PRIVATE_KEY_ID
+            - PRIVATE_KEY
+            - CLIENT_EMAIL
+            - CLIENT_ID
+            - AUTH_URI
+            - TOKEN_URI
+            - AUTH_PROVIDER_X509_CERT_URL
+            - CLIENT_X509_CERT_URL
         networks:
             - 42069-backend-net
         container_name: "42069-backend-container"
