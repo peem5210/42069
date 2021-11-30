@@ -21,11 +21,11 @@ class Watcher:
 
     def get_new_state(self, state):
         state['count'] += 1
-        if state['count'] % 2:
-            self.lai_service.send_msg(str(state['previous_cell']) + ', health-check')
+        if state['count'] % 360:  # %2 = 20 secs
+            self.lai_service.send_msg(f"{state['previous_cell']}, health-check")
         if state['sheet_name'] and state['cell_loc']:
             current_cell = self.gsheet_service.get_cell(state['sheet_name'], state['cell_loc'])
             if state['cell_loc'] and state['previous_cell'] != current_cell:
                 state['previous_cell'] = current_cell
-                self.lai_service.send_msg(str(state['previous_cell']))
+                self.lai_service.send_msg(f"previous: {state['previous_cell']}, current: {current_cell}")
         return state
