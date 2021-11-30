@@ -1,6 +1,5 @@
 import os
 import io
-import json
 import shutil
 import pathlib
 import pandas as pd
@@ -13,6 +12,7 @@ class CapStoneUtil:
     def __init__(self):
         self.lai_service = LaiService()
         self.dir = './data'
+        pathlib.Path(self.dir).mkdir(parents=True, exist_ok=True)
 
     def open_and_store_json(self, json_d, name=''):
         pathlib.Path(self.dir).mkdir(parents=True, exist_ok=True)
