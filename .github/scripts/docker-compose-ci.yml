@@ -13,4 +13,6 @@ services:
 networks:
     42069-backend-net:
         name: "42069-net"
+        driver_opts:
+            com.docker.network.driver.mtu: 1400
 #        external: true
