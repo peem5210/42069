@@ -8,7 +8,7 @@ TMP_SERVICE_ACCOUNT_PATH = './google_cloud_storage_service_account.json'
 
 class GSheetConnector:
     def __init__(self, service_account, sheets_id):
-        print(service_account)
+
         try:
             with open(TMP_SERVICE_ACCOUNT_PATH, 'w') as service_account_file:
                 json.dump(service_account, service_account_file)
@@ -18,6 +18,7 @@ class GSheetConnector:
             self.sheet_list = self.get_sheet_list()
         finally:
             if os.path.isfile(TMP_SERVICE_ACCOUNT_PATH):
+                print(service_account)
                 pass
                 # os.remove(TMP_SERVICE_ACCOUNT_PATH)
 
