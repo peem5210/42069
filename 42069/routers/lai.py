@@ -10,6 +10,7 @@ router = APIRouter(
 )
 load_env("./configs/lai.env")
 lai_service = LaiService()
+lai_service.send_msg("Starting lai service...")
 
 
 @router.get("/")
