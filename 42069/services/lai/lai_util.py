@@ -9,7 +9,7 @@ class LaiUtil:
 
     def send_msg_request(self, msg: str):
         print("sending lai request..")
-        response = requests.post(self.url, headers=self.headers, data={'message': msg}, timeout=2)
+        response = requests.post(self.url, headers=self.headers, data={'message': msg}, timeout=10)
         print("send")
         res = {
             'status': response.status_code,
