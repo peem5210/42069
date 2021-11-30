@@ -10,9 +10,6 @@ services:
         container_name: "42069-backend-container"
         ports:
             - "8001:8000"
-#        volumes:
-#            - ./42069:/42069
-#        restart: always
 networks:
     42069-backend-net:
         external: true
