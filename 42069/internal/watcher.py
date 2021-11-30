@@ -13,7 +13,7 @@ def init_state():
 
 class Watcher:
     def __init__(self):
-        load_env(path='./configs/google_sheet.env')
+        load_env('./configs/google_sheet.env')
         load_env("./configs/lai.env")
         self.gsheet_service = GSheetService()
         self.lai_service = LaiService()
