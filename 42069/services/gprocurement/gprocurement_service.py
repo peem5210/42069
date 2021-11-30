@@ -48,7 +48,7 @@ class GprocurementService:
         soup = BeautifulSoup(response.text, 'html.parser')
         return soup.select('.tr0') + soup.select('.tr1')
 
-    @cached(cache=TTLCache(maxsize=1000, ttl=60 * 60 * 24))
+    @cached(cache=TTLCache(maxsize=100, ttl= 60 * 60 * 60 * 24))
     def get_ebidding(self, page: int = 0,
                      project_type: str = '01',
                      sdate: str = '',
