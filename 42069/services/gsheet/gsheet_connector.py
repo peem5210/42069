@@ -18,7 +18,8 @@ class GSheetConnector:
             self.sheet_list = self.get_sheet_list()
         finally:
             if os.path.isfile(TMP_SERVICE_ACCOUNT_PATH):
-                print(service_account)
+                with open(TMP_SERVICE_ACCOUNT_PATH, "r") as f:
+                    print(json.load(f))
                 pass
                 # os.remove(TMP_SERVICE_ACCOUNT_PATH)
 
