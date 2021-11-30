@@ -8,6 +8,7 @@ def init_state():
         'cell_loc': 'E56',
         'previous_cell': '',
         'sheet_name': 'ลำดับ 1701-1800',
+        'count': 0
     }
 
 
@@ -18,7 +19,10 @@ class Watcher:
         self.gsheet_service = GSheetService()
         self.lai_service = LaiService()
 
-    def check_cell(self, state):
+    def get_new_state(self, state):
+        state['count'] += 1
+        if state['count'] % 2:
+            self.lai_service.send_msg(str(state['previous_cell']) + ', health-check')
         if state['sheet_name'] and state['cell_loc']:
             current_cell = self.gsheet_service.get_cell(state['sheet_name'], state['cell_loc'])
             if state['cell_loc'] and state['previous_cell'] != current_cell:
