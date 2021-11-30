@@ -1,4 +1,5 @@
 # 42069
-a backend using FastAPI framework
+a general backend develop using FastAPI framework with frictionless to both implement new feature and deploy 
+
 
 
