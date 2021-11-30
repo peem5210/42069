@@ -37,6 +37,6 @@ async def update_watcher_state():
 
 
 @app.on_event("startup")
-@repeat_every(seconds=10)
+@repeat_every(seconds=1000)
 async def check_cell():
     app.state.watcher = watcher.get_new_state(app.state.watcher)
