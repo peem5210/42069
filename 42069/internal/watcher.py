@@ -2,22 +2,23 @@ from services.gsheet.gsheet_service import GSheetService
 from services.lai.lai_service import LaiService
 from utils.util_func import load_env
 
-
-def init_state():
-    return {
-        'cell_loc': 'E56',
-        'previous_cell': '',
-        'sheet_name': 'ลำดับ 1701-1800',
-        'count': 0
-    }
+load_env('./configs/google_sheet.env')
+load_env("./configs/lai.env")
 
 
 class Watcher:
     def __init__(self):
-        load_env('./configs/google_sheet.env')
-        load_env("./configs/lai.env")
         self.gsheet_service = GSheetService()
         self.lai_service = LaiService()
+
+    @property
+    def init_state(self):
+        return {
+            'cell_loc': 'E56',
+            'previous_cell': '',
+            'sheet_name': 'ลำดับ 1701-1800',
+            'count': 0
+        }
 
     def get_new_state(self, state):
         state['count'] += 1

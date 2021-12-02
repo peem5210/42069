@@ -48,9 +48,8 @@ class GSheetConnector:
 
     def save_all_sheet(self, orient='records', path=''):
         for x in self.sheet_list:
-            if (x != 'description'):
-                df = self.to_df(self.get_sheet_values(x))
-                df.to_json(path + x + '.json', orient=orient)
+            df = self.to_df(self.get_sheet_values(x))
+            df.to_json(path + x + '.json', orient=orient)
 
     def to_df(self, sheet):
         data = sheet
@@ -59,3 +58,4 @@ class GSheetConnector:
         data = [i[:len(headers)] for i in data]
         df = pd.DataFrame(data, columns=headers)
         return df
+
