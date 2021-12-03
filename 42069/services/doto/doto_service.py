@@ -14,7 +14,9 @@ class DotoService:
         self.todo_sh = self.gsheet_connector.get_sheet('todo')
 
     def get_todos(self):
-        return self.gsheet_connector.to_df(self.todo_sh.get_all_values()).to_dict(orient='records')
+        df = self.gsheet_connector.to_df(self.todo_sh.get_all_values())
+        df = df[df['COMPLETION'] != 'Yes']
+        return df.to_dict(orient='records')
 
     def add_todo(self, todo, desc, priority):
         id = self.gsheet_connector.get_next_avail_row('todo')
