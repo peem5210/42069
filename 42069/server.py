@@ -46,5 +46,5 @@ async def update_watcher_state():
 @app.on_event("startup")
 @repeat_every(seconds=60 * 60)
 async def repeater():
-    app.state.doto = doto.get_new_state(app.state.doto)
     await update_watcher_state()
+    app.state.doto = await doto.get_new_state(app.state.doto)

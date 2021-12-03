@@ -46,9 +46,9 @@ async def get_todo(id):
 
 
 @router.get("/notify")
-def get_new_state(state):
-    doto_df = doto_service.get_todos()
-    doto_df = doto_df[(doto_df['MUTE'] == '') & (doto_df['COMPLETION'] != "Yes")]
+async def get_new_state(state):
+    doto_df = doto_service.get_todos(json=False)
+    doto_df = doto_df[(doto_df.MUTE == '') & (doto_df.COMPLETION != "Yes")]
     doto_df['msg'] = doto_df.ID + ': ' + doto_df.TODO
     todos = doto_df.msg.values.tolist()
     if len(todos) > 0:
