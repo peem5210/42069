@@ -15,8 +15,11 @@ from routers import (
     gsheet,
     doto
 )
+MINUTE = 60
+HOUR = 60 * MINUTE
+DAY = 24 * HOUR
 
-load_env('.env')
+load_env()
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -32,19 +35,29 @@ app.include_router(temp_capstone.router)
 app.include_router(gsheet.router)
 app.include_router(doto.router)
 
+
+app.state.counter = 0
 watcher = Watcher()
 app.state.watcher = watcher.init_state
-app.state.doto = doto.init_state()
 
 
 @app.get("/update-watcher-state")
-async def update_watcher_state():
+def update_watcher_state():
     app.state.watcher = watcher.get_new_state(app.state.watcher)
     return app.state.watcher
 
 
 @app.on_event("startup")
-@repeat_every(seconds=60 * 60)
-async def repeater():
-    await update_watcher_state()
-    app.state.doto = await doto.get_new_state(app.state.doto)
+@repeat_every(seconds=1)
+@app.get("/debug-repeater")
+def repeater():
+    if not app.state.counter % MINUTE:
+        update_watcher_state()
+    elif not app.state.counter % HOUR:
+        doto.get_new_state(app.state.doto)
+    elif not app.state.counter % (365 * DAY):
+        app.state.counter = 0
+    app.state.counter += 1
+    return app.state.counter
+
+

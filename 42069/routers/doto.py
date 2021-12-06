@@ -46,7 +46,7 @@ async def get_todo(id):
 
 
 @router.get("/notify")
-async def get_new_state(state):
+def get_new_state():
     doto_df = doto_service.get_todos(json=False)
     doto_df = doto_df[(doto_df.MUTE == '') & (doto_df.COMPLETION != "Yes")]
     doto_df['msg'] = doto_df.ID + ': ' + doto_df.TODO
@@ -54,11 +54,5 @@ async def get_new_state(state):
     if len(todos) > 0:
         msg = 'TODOs ::\n' + ('\n'.join(todos))
         lai_service.send_msg(msg)
-        state['count'] += 1
-        return state
 
 
-def init_state():
-    return {
-        'count': 0
-    }
