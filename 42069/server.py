@@ -18,6 +18,7 @@ from routers import (
 MINUTE = 60
 HOUR = 60 * MINUTE
 DAY = 24 * HOUR
+YEAR = 365 * DAY
 
 load_env()
 app = FastAPI()
@@ -55,7 +56,7 @@ def repeater():
         update_watcher_state()
     elif not app.state.counter % HOUR:
         doto.get_new_state(app.state.doto)
-    elif not app.state.counter % (365 * DAY):
+    elif not app.state.counter % YEAR:
         app.state.counter = 0
     app.state.counter += 1
     return app.state.counter
