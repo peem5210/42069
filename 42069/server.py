@@ -55,7 +55,7 @@ def repeater():
     if not app.state.counter % MINUTE:
         update_watcher_state()
     elif not app.state.counter % HOUR:
-        doto.get_new_state(app.state.doto)
+        doto.get_new_state()
     elif not app.state.counter % YEAR:
         app.state.counter = 0
     app.state.counter += 1
