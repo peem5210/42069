@@ -52,13 +52,16 @@ def update_watcher_state():
 @repeat_every(seconds=1)
 @app.get("/debug-repeater")
 def repeater():
-    if not app.state.counter % MINUTE:
-        update_watcher_state()
-    if not app.state.counter % HOUR:
-        doto.get_new_state()
-    if not app.state.counter % YEAR:
-        app.state.counter = 0
-    app.state.counter += 1
+    try:
+        if not app.state.counter % MINUTE:
+            update_watcher_state()
+        if not app.state.counter % HOUR:
+            doto.get_new_state()
+        if not app.state.counter % YEAR:
+            app.state.counter = 0
+        app.state.counter += 1
+    except Exception as e:
+        return {"error": str(e)}
     return app.state.counter
 
 

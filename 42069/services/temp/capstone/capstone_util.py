@@ -35,6 +35,27 @@ class CapStoneUtil:
     def list_all(self):
         return os.listdir(self.dir)
 
+    def list_grep(self, grep):
+        res = {
+            "found": []
+        }
+        for f in os.listdir(self.dir):
+            if grep in f:
+                res['found'].append(os.path.join(self.dir, f))
+        return res
+
+    def delete_grep(self, grep):
+        res = {
+            "results": []
+        }
+        for f in os.listdir(self.dir):
+            try:
+                if grep in f:
+                    os.remove(os.path.join(self.dir, f))
+                    res['results'].append(os.path.join(self.dir, f))
+            except Exception as e:
+                res['results'].append(str(e))
+        return res
     def clear(self):
         shutil.rmtree(self.dir)
         pathlib.Path(self.dir).mkdir(parents=True, exist_ok=True)

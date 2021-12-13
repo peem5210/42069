@@ -1,4 +1,4 @@
-name: Build and CD
+name: Manual deploy
 
 on:
   push:

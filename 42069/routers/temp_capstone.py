@@ -15,7 +15,7 @@ async def store_json(json: dict):
 
 
 @router.post("/store-json/{name}")
-async def store_json(json: dict, name:str):
+async def store_json(json: dict, name: str):
     return capstone_service.open_and_store_json(json, name=name)
 
 
@@ -27,6 +27,16 @@ async def read_all():
 @router.get("/list-all-json/")
 async def read_all():
     return capstone_service.list_all()
+
+
+@router.get("/list-grep/")
+async def read_grep(grep: str = ''):
+    return capstone_service.list_grep(grep)
+
+
+@router.get("/delete-grep/")
+async def del_grep(grep: str = ''):
+    return capstone_service.delete_grep(grep)
 
 
 @router.get("/clear/")

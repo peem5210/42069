@@ -17,5 +17,11 @@ class CapStoneService:
     def list_all(self):
         return self.util.list_all()
 
+    def list_grep(self, grep):
+        return self.util.list_grep(grep)
+
+    def delete_grep(self, grep):
+        return self.util.delete_grep(grep)
+
     def clear(self):
         return self.util.clear()
